@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Hover Effect Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.05);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card-description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid" id="cardGrid"></div>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Netflix",
+                description: "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+                link: "https://netflix.com"
+            },
+            {
+                title: "Google",
+                description: "A multinational technology company that specializes in Internet-related services and products.",
+                link: "https://google.com"
+            },
+            {
+                title: "Meta",
+                description: "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
+                link: "https://meta.com"
+            },
+            {
+                title: "Amazon",
+                description: "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+                link: "https://amazon.com"
+            },
+            {
+                title: "Microsoft",
+                description: "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+                link: "https://microsoft.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            },
+            {
+                title: "Stripe",
+                description: "A technology company that builds economic infrastructure for the internet.",
+                link: "https://stripe.com"
+            }
+        ];
+
+        function createCard(project) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <a href="${project.link}" target="_blank">
+                    <h3 class="card-title">${project.title}</h3>
+                    <p class="card-description">${project.description}</p>
+                </a>
+            `;
+            return card;
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('cardGrid');
+            projects.forEach(project => {
+                grid.appendChild(createCard(project));
+            });
+        }
+
+        renderCards();
+    </script>
+</body>
+</html>

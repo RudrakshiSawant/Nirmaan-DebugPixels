@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <script type="module" src="adminsignupscript.js"></script>
+
+    <script>
+        // Handle the signup process
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    window.location.href = 'loginadmin.html';  // Redirect to a welcome page or dashboard
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    document.getElementById('error-message').textContent = errorMessage;
+                    document.getElementById('error-message').style.display = 'block';
+                });
+        });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Mulish', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f2f2f2;
+        }
+
+        .container {
+            width: 440px;
+            padding: 40px 32px;
+            border-radius: 8px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background: #fff;
+        }
+
+        .container h1 {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container .custome-input {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .container .custome-input input {
+            color: #1d1d1d;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            height: 46px;
+            letter-spacing: 0.03rem;
+            border: 1px solid #1d1d1d;
+            background: transparent;
+            outline: none;
+            border-radius: 8px;
+            text-indent: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .container .custome-input input:focus {
+            border-color: #5222fd;
+        }
+
+        .container .custome-input i {
+            position: absolute;
+            font-size: 28px;
+            right: 10px;
+            top: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .container .custome-input input:focus + i {
+            color: #5222fd;
+        }
+
+        .container form .login {
+            width: 100%;
+            margin-top: 30px;
+            background: #344ecf;
+            color: #fff;
+            border: none;
+            line-height: 50px;
+            font-size: 18px;
+            letter-spacing: 0.025em;
+            cursor: pointer;
+            font-weight: 800;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .container form .login:hover {
+            background: #2226fd;
+        }
+
+        .container .links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .container .links a {
+            color: #6b43ff;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            text-underline-offset: 6px;
+            text-decoration-color: #6b43ff;
+        }
+
+        .container .links a:hover {
+            text-decoration: underline;
+        }
+
+        #error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup-form">
+            <label for="signup-email">Email:</label>
+            <div class="custome-input">
+                <input type="email" id="signup-email" placeholder="Enter Email" required>
+                <i class='bx bx-at'></i>
+            </div>
+
+            <label for="signup-password">Password:</label>
+            <div class="custome-input">
+                <input type="password" id="signup-password" placeholder="Enter Password" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+
+            <button type="submit" id="signup-btn" class="login">Sign Up</button>
+            <div id="error-message"></div>
+        </form>
+        <div class="links">
+            <p>Already have an account? <a href="loginadmin.html">Login</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

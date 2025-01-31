@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="loginstyle.css">
+    <script type="module" src="loginscript.js"></script>
+    <script type="module" src="firebaseConfig.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Login to your account 👏</h1>
+        <div class="social-login">
+            <button class="google">
+                <i class='bx bxl-google'></i>
+                Use Google
+            </button>
+            <button class="google">
+                <i class='bx bxl-apple'></i>
+                Use Apple
+            </button>
+        </div>
+        <div class="divider">
+            <div class="line"></div>
+            <p>Or</p>
+            <div class="line"></div>
+        </div>
+
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <div class="custome-input">
+                <input type="email" id="login-email" placeholder="Your Email" autocomplete="off" required>
+                <i class='bx bx-at'></i>
+            </div>
+            <label for="password">Password:</label>
+            <div class="custome-input">
+                <input type="password" id="login-password" placeholder="Your Password" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <button type="submit" id="login-btn" class="login">Login</button>
+            <div id="error-message" style="color: red; display: none;"></div>
+            <div class="links">
+                <a href="#">Reset Password</a>
+                <a href="signup.html">Don't have an account?</a>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
